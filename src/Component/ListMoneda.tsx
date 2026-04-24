@@ -8,12 +8,12 @@ interface CryptoProp {
 
 export const ListMoneda = ({ loading, moneda }: CryptoProp) => {
     return (
-    <div>
+    <div className="bg-[#eee]">
         <h1>Cryptomonedas</h1>
         {loading ? (
             <p>Cargando datos...</p>
         ) : (
-            <ul>
+            <ul className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] h-full gap-4 mx-4">
                 {moneda.map((item) => (
                     <li key={item.id}>
                         <CardMoneda item={item} />

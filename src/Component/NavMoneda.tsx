@@ -5,10 +5,9 @@ import { BuscarMoneda } from "./BuscarMoneda";
 interface NavProps {
     moneda: Coin[];
     loading: boolean;
-    item: Coin;
 }
 
-export const NavMoneda = ({ moneda, loading, item }: NavProps) => {
+export const NavMoneda = ({ moneda, loading }: NavProps) => {
 
     //esdado para busqueda de las monedas
     const [buscarMoneda, setBuscarMoneda] = useState('');
@@ -19,7 +18,7 @@ export const NavMoneda = ({ moneda, loading, item }: NavProps) => {
     return (
     <div>
         <div>
-            <BuscarMoneda item={item} buscarMoneda={buscarMoneda} setBuscarMoneda={setBuscarMoneda} mostrarSugerencia={mostrarSugerencia} setMostrarSugerencia={setMostrarSugerencia} moneda={moneda} loading={loading} />
+            <BuscarMoneda buscarMoneda={buscarMoneda} setBuscarMoneda={setBuscarMoneda} mostrarSugerencia={mostrarSugerencia} setMostrarSugerencia={setMostrarSugerencia} moneda={moneda} loading={loading} />
         </div>
     </div>
     )

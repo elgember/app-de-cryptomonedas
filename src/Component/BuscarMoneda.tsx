@@ -30,8 +30,8 @@ export const BuscarMoneda = ({ buscarMoneda, setBuscarMoneda, mostrarSugerencia,
         {loading ? (
             <p>Cargando...</p>
         ) : (
-            <div>
-                <input className='border' type="text" value={buscarMoneda} onChange={(e) => { setBuscarMoneda(e.target.value); setMostrarSugerencia(true); }} onFocus={() => setMostrarSugerencia(true)} placeholder='Buscar Moneda' />
+            <div className='text-center my-3'>
+                <input className='bg-white pl-10 py-1 rounded-sm w-3/4' type="text" value={buscarMoneda} onChange={(e) => { setBuscarMoneda(e.target.value); setMostrarSugerencia(true); }} onFocus={() => setMostrarSugerencia(true)} placeholder='Buscar Moneda' />
             </div>
         )}
         <div>
@@ -46,11 +46,11 @@ export const BuscarMoneda = ({ buscarMoneda, setBuscarMoneda, mostrarSugerencia,
             )}
         </div>
         <div>
-            {filtarMonedas.length > 0 ? (
+            {buscarMoneda && filtarMonedas.length > 0 ? (
                 <CardMoneda item={filtarMonedas[0]} />
-            ) : (
+            ) : buscarMoneda ? (
                 <p>No se encontraron monedas</p>
-            )}
+            ) : null}
         </div>
     </div>
     )
