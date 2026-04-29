@@ -8,18 +8,20 @@ interface CryptoProp {
 
 export const ListMoneda = ({ loading, moneda }: CryptoProp) => {
     return (
-    <div className="bg-[#eee]">
-        <h1>Cryptomonedas</h1>
+    <div className="bg-[#eee] w-full h-screen overflow-y-auto">
         {loading ? (
             <p>Cargando datos...</p>
         ) : (
-            <ul className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] h-full gap-4 mx-4">
-                {moneda.map((item) => (
-                    <li key={item.id}>
-                        <CardMoneda item={item} />
-                    </li>
-                ))}
-            </ul>
+            <div className="bg-white w-full overflow-hidden rounded-lg p-4 lg:w-[60%] mx-auto">
+                <h1 className="text-center my-4 font-bold">Cryptomonedas</h1>
+                <ul>
+                    {moneda.map((item) => (
+                        <li key={item.id}>
+                            <CardMoneda item={item} />
+                        </li>
+                    ))}
+                </ul>
+            </div>
         )}
     </div>
     )
