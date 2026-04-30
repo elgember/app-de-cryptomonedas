@@ -1,6 +1,7 @@
 import {  useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Coin, PriceHistory } from '../Types/Coin';
+import { Icon } from '@iconify/react';
 
 interface MonedaProps {
     moneda: Coin[];
@@ -33,7 +34,7 @@ export const Moneda = ({ moneda, loading, setLoading, historial }: MonedaProps) 
             <img className='w-20 h-20 object-contain' src={monedaId.image} alt={monedaId.name} />
             <h2 className='text-2xl font-bold'>{monedaId.name}</h2>
         </div>
-        <div>
+        <div className='mb-4'>
             <p className='p-2'><strong>Precio: </strong>${Number(monedaId.current_price)}</p>
             <p className='p-2'><strong>Capitalización de mercado: </strong>${Number(monedaId.market_cap).toLocaleString()}</p>
             <p className='p-2'><strong>Volumen total: </strong>${Number(monedaId.total_volume).toLocaleString()}</p>
@@ -44,10 +45,19 @@ export const Moneda = ({ moneda, loading, setLoading, historial }: MonedaProps) 
                 <p>No hay cambios de precio registrados.</p>
             ) : (
                 historial.map((item, index) => (
-                    <div key={index}>
-                        <p><strong>{item.name}</strong> cambió de ${item.oldPrice} a ${item.newPrice} el {item.date} ({item.type === 'up' ? 'Subió' : 'Bajó'})</p>
+                    <div key={index} className='my-4 p-2 shadow-md rounded-lg bg-gray-200 grid grid-cols-2 gap-4'>
+                        <div>
+                            <span>{item.name} </span>
+                            <span>{item.date}</span>
+                        </div>
+                        <div className='flex gap-4 items-center'>
+                            <span>${item.oldPrice.toLocaleString()}</span>
+                            <Icon icon={item.type === 'up' ? "mdi:trending-up" : "mdi:trending-down"} 
+                                className={item.type === 'up' ? "text-green-400" : "text-red-400"}/>
+                            <span>${item.newPrice.toLocaleString()}</span>
+                        </div>
                     </div>
-                ))
+                )) 
             )}
         </div>
     </div>

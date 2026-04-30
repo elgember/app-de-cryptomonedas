@@ -19,8 +19,8 @@ export const CardMoneda = ({ item }: CryptoItem) => {
     }
 
     return (
-    <div className='w-full h-full p-4 overflow-hidden'>
-        <Link className='flex items-center gap-4 w-full' to={`/moneda/${item.id}`}>
+    <div className='w-full h-full p-4 overflow-hidden hover:bg-gray-100 rounded'>
+        <Link className='flex items-center gap-4 w-full cursor-pointer' to={`/moneda/${item.id}`}>
              <img className='w-10 h-10 object-contain' src={item.image} alt={item.name} />
             <div className='grid grid-cols-3 gap-30 items-center w-full md:gap-44'>
                 <h3><strong>{item.name}</strong></h3>
